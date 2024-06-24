@@ -21,14 +21,16 @@ const getBody = (req, callback) => {
 };
 
 // here, you could declare one or more variables to store what comes back from the form.
-let item = "Enter something below.";
+let item = "Enter a color below.";
+let color = "black";
 
 // here, you can change the form below to modify the input fields and what is displayed.
 // This is just ordinary html with string interpolation.
 const form = () => {
   return `
   <body>
-  <p>${item}</p>
+  <p>The random num is: ${randomNum}</p>
+  <p style="color:${color};">${item}</p>
   <form method="POST">
   <input name="item"></input>
   <button type="submit">Submit</button>
@@ -36,7 +38,7 @@ const form = () => {
   </body>
   `;
 };
-
+let randomNum = Math.floor(Math.random() * 1000)
 const server = http.createServer((req, res) => {
   console.log("req.method is ", req.method);
   console.log("req.url is ", req.url);
@@ -46,6 +48,14 @@ const server = http.createServer((req, res) => {
       // here, you can add your own logic
       if (body["item"]) {
         item = body["item"];
+        color = item;
+        // if (item < randomNum) {
+        //   item = "The number is higher";
+        // } else if ( item > randomNum) {
+        //   item = "The number is lower";
+        // } else {
+        //   item = "Good Guess"
+        // }
       } else {
         item = "Nothing was entered.";
       }

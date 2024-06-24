@@ -11,9 +11,6 @@ writeFileSync(
 console.log('done with this task')
 console.log('starting the next one')
 
-writeFileSync('./answers/temporary/fileA.txt', `First line\n`)
-writeFileSync('./answers/temporary/fileA.txt', `Second line\n`, {flag: 'a'})
-writeFileSync('./answers/temporary/fileA.txt', `Third line\n`, {flag: 'a'})
-
-const third = readFileSync('./answers/temporary/fileA.txt', 'utf8')
-console.log(`Here is the output from ./temporary/fileA.txt : ${third}`)
+writeFileSync('./answers/temporary/fileC.txt', `First line`)
+// const third = readFileSync('./temporary/fileA.txt', 'utf8')
+// console.log(`Here is the output from ./temporary/fileA.txt : ${third}`)
