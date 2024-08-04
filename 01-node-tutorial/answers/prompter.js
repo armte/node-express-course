@@ -36,7 +36,7 @@ const form = () => {
   </body>
   `;
 };
-
+// this is a comment
 const server = http.createServer((req, res) => {
   console.log("req.method is ", req.method);
   console.log("req.url is ", req.url);
@@ -60,5 +60,8 @@ const server = http.createServer((req, res) => {
   }
 });
 
+server.on("request", (req) => {
+  console.log("event received: ", req.method, req.url);
+});
 server.listen(3000);
 console.log("The server is listening on port 3000.");

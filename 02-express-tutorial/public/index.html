@@ -1,0 +1,22 @@
+<script>
+  async function fetchProducts() {
+    let divEl = document.getElementById("divElement")
+    divEl.innerHTML = `<p>Attempting to get products...</p>`;
+    const resp = await fetch('http://localhost:3000/api/v1/products', {method: "GET"})
+    if (resp.ok) {
+      let products = await resp.json();
+      let count = 1;
+      products.forEach( (product) => {
+        divEl.innerHTML += `<li>Product ${count}:</li><li style="padding-left: 20px">name: ${product.name}</li><li style="padding-left: 20px">id: ${product.id}</li><li style="padding-left: 20px">price: ${product.price}</li>`;
+        divEl.innerHTML += `<p style="padding-left: 20px">description: ${product.desc}</p>`
+        divEl.innerHTML += `<img src="${product.image}"></img>`
+        count++;
+      })
+    }
+    console.log(resp);
+  } 
+</script>
+
+<h1>Hello World</h1>
+<button onclick="fetchProducts()">Get Products</button>
+<div id="divElement">Original inner content</div>
